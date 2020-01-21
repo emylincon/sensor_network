@@ -20,6 +20,7 @@ device_file = device_folder + '/w1_slave'
 
 algo = psutil.Process()
 prev_t = 0
+temp_ = []
 
 os.system('clear')
 print('-----------------------------------')
@@ -65,14 +66,15 @@ def read_temp():
         temp_string = lines[1][equals_pos + 2:]
         temp_c = float(temp_string) / 1000.0
 
-        return temp_c
+        temp.append(temp_c)
 
 
 def main():
     while True:
-        temp = read_temp()
-        #temp = r.randrange(20)
-        if temp:
+        read_temp()
+
+        if temp_ > 0:
+            temp = temp_.pop()
             cpu = plot_cpu()
             mem = round(algo.memory_percent(), 4)
             message = 'Temperature {} {} {}'.format(temp, mem, cpu)
