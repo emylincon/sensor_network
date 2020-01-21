@@ -114,6 +114,7 @@ def plot_me():
                 h+=1
 
     fig.suptitle('IoT Sensor Network Smart City')
+    print('here: ', data_dict)
 
 
 def plotter(ax, data, key, name, col, x_axis):
