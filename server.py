@@ -10,6 +10,7 @@ import paho.mqtt.client as mqtt
 fig = plt.figure()
 data_dict = {}     # {temp_server:{Temperature:[], Memory:[], CPU:[], x_list: []}, humidity_server:{Humidity:[], Memory:[], CPU:[], x_list: []}}
 window = 15
+style = ['g--^', 'r:o', 'b-.s']
 
 
 def window_check():
@@ -20,6 +21,7 @@ def window_check():
         if len(d_) > window:
             for data in list(data_dict.values())[i].values():
                 data.pop(0)
+                print('length: ', len(data))
 
 
 def start_up():
@@ -121,12 +123,12 @@ def plot_me():
 def plotter(ax, data, key, name, col, x_axis):
     ax.grid(True)
 
-    ax.plot(x_axis, _mov_avg(data), linewidth=2, label='{} {}'.format(name, key), color=col)
+    ax.plot(x_axis, _mov_avg(data), linewidth=2, label='{}'.format(name), color=col)
     #ax.set_ylabel('Moving {}'.format(name))
     ax.set_xlabel('Time (seconds)')
     ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.5, color=col)
     if (name != "Memory") and (name != "CPU"):
-        ax.set_ylabel('Client: {}'.format(key), rotation=0, fontsize=10, labelpad=30)
+        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=30)
     ax.legend()
     #print('plot')
     plt.subplot(ax)
