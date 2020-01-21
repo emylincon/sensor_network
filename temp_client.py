@@ -8,10 +8,10 @@ import os
 import psutil
 import random as r
 
-'''
+
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
-'''
+
 
 base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
@@ -70,8 +70,8 @@ def read_temp():
 
 def main():
     while True:
-        #temp = read_temp()
-        temp = r.randrange(20)
+        temp = read_temp()
+        #temp = r.randrange(20)
         if temp:
             cpu = plot_cpu()
             mem = round(algo.memory_percent(), 4)

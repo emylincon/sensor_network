@@ -1,19 +1,19 @@
-#import RPi.GPIO as GPIO
-#import dht11
+import RPi.GPIO as GPIO
+import dht11
 import time
 import paho.mqtt.client as mqtt
 import os
 import psutil
 import random as r
 # initialize GPIO
-'''
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 #GPIO.cleanup()
 
 # read data using Pin GPIO21
 instance = dht11.DHT11(pin=21)
-'''
+
 algo = psutil.Process()
 prev_t = 0
 
@@ -37,7 +37,6 @@ client.connect(broker_ip, broker_port_no, 60)
 def plot_cpu():
     global prev_t
 
-    # get cpu
     next_t = psutil.cpu_percent(percpu=False)
     delta = abs(prev_t - next_t)
     prev_t = next_t
@@ -45,15 +44,14 @@ def plot_cpu():
 
 
 def main():
-    '''
-    result = instance.read()
-    if result.is_valid():
-        print("Temp: %d C" % result.temperature +' '+"Humid: %d %%" % result.humidity)
-    temp = result.temperature
-    hum=result.humidity
-    '''
+
     while True:
-        hum = r.randrange(20)
+        result = instance.read()
+        if result.is_valid():
+            print("Temp: %d C" % result.temperature + ' ' + "Humid: %d %%" % result.humidity)
+        #temp = result.temperature
+        hum = result.humidity
+        #hum = r.randrange(20)
         if hum != 0:
             cpu = plot_cpu()
             mem = round(algo.memory_percent(), 4)
