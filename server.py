@@ -54,7 +54,7 @@ def on_message(message_client, userdata, msg):
     topic_recv = msg.topic.split('/')[1]
     #data format = 'title sensor_data memory_util cpu_util'
     if topic_recv not in data_dict:
-        data_dict[topic_recv] = {data[0]: data[1], 'Memory': data[2], 'CPU': data[3], 'x_list': [1]}
+        data_dict[topic_recv] = {data[0]: [data[1]], 'Memory': [data[2]], 'CPU': [data[3]], 'x_list': [1]}
     else:
         keys = [data[0], 'Memory', 'CPU']
         for i in range(3):
