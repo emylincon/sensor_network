@@ -135,7 +135,7 @@ def plotter(ax, data, key, name, col, x_axis):
     if name == 'Memory':
         ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.5, color='r')
     if (name != "Memory") and (name != "CPU"):
-        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=60)
+        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=6)
     ax.legend()
     #print('plot')
     plt.subplot(ax)
