@@ -29,8 +29,8 @@ def start_up():
     print('Welcome to MQTT Subscriber client')
     print('-----------------------------------')
 
-    username = input('Username of Broker: ').strip()
-    password = input('Password of Broker: ').strip()
+    username = 'admin'
+    password = 'password'
     broker_ip = input("Broker's IP: ").strip()
     broker_port_no = 1883
     topic = 'iot/#'

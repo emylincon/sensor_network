@@ -22,8 +22,8 @@ print('-----------------------------------')
 print('Welcome to MQTT Publisher client')
 print('-----------------------------------')
 client = mqtt.Client()
-username = input('Username of Broker: ').strip()
-password = input('Password of Broker: ').strip()
+username = 'admin'
+password = 'password'
 broker_ip = input("Broker's IP: ").strip()
 broker_port_no = 1883
 topic = 'iot/Humidity_server'
@@ -59,6 +59,7 @@ def main():
             mem = round(algo.memory_percent(), 4)
             message = f'Humidity {hum} {mem} {cpu}'
             client.publish(topic, message)
+            print(message)
         time.sleep(1)
 
 
