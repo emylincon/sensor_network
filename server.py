@@ -65,6 +65,10 @@ def on_message(message_client, userdata, msg):
             data_dict[topic_recv][keys[i]].append(float(data[i+1]))
         last = data_dict[topic_recv]['x_list'][-1]
         data_dict[topic_recv]['x_list'].append(last+1)
+        for i in data_dict[topic_recv]:
+            if len(data_dict[topic_recv][i]) > window:
+                data_dict[topic_recv][i].pop(0)
+                print('len: ', len(data_dict[topic_recv][i]))
 
 
 def broker_loop():
@@ -152,8 +156,8 @@ def main():
                 print('Waiting for Data')
                 a = 0
         else:
-            if len(data_dict) > 0:
-                window_check()
+            #if len(data_dict) > 0:
+            #    window_check()
             show_graphs()
             #print('here')
         time.sleep(1)
