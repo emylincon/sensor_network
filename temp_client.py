@@ -66,7 +66,7 @@ def read_temp():
         temp_string = lines[1][equals_pos + 2:]
         temp_c = float(temp_string) / 1000.0
 
-        temp.append(temp_c)
+        temp_.append(temp_c)
 
 
 def main():
