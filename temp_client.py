@@ -75,7 +75,7 @@ def main():
         if temp:
             cpu = plot_cpu()
             mem = round(algo.memory_percent(), 4)
-            message = f'Temperature {temp} {mem} {cpu}'
+            message = 'Temperature {} {} {}'.format(temp, mem, cpu)
             client.publish(topic, message)
             print(message)
             time.sleep(1)
