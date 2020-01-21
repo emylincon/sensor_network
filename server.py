@@ -58,7 +58,7 @@ def on_message(message_client, userdata, msg):
     else:
         keys = [data[0], 'Memory', 'CPU']
         for i in range(3):
-            data_dict[topic_recv][keys[i]] = data[i+1]
+            data_dict[topic_recv][keys[i]].append(data[i+1])
         last = data_dict[topic_recv]['x_list'][-1]
         data_dict[topic_recv]['x_list'].append(last+1)
 
