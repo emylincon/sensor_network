@@ -19,8 +19,10 @@ def window_check():
         first = list(data_dict.values())[i]
         d_ = list(first.values())[0]
         if len(d_) > window:
-            for data in list(data_dict.values())[i].values():
-                data.pop(0)
+            dict_key = list(data_dict.keys())[i]
+            for data in data_dict[dict_key]:
+                data_dict[dict_key][data].pop(0)
+                #data.pop(0)
                 print('length: ', len(data))
 
 
