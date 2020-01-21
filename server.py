@@ -23,7 +23,7 @@ def window_check():
             for data in data_dict[dict_key]:
                 data_dict[dict_key][data].pop(0)
                 #data.pop(0)
-                print('length: ', len(data))
+                print('length: ', len(data_dict[dict_key][data]))
 
 
 def start_up():
