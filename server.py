@@ -104,9 +104,8 @@ def plot_me():
     a_e = -1
     hold_ax = [a_c, a_i, a_e]
     for topic_ in data_dict:
-        a_c += 3
-        a_i += 3
-        a_e += 3
+        for i in hold_ax:
+            i += 3
         h = 0
         for data_set in data_dict[topic_]:
             x_list = data_dict[topic_]['x_list']
