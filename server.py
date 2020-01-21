@@ -145,4 +145,5 @@ def main():
             if len(data_dict) > 0:
                 window_check()
             show_graphs()
+        time.sleep(1)
 
