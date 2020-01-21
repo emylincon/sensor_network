@@ -134,8 +134,12 @@ def plotter(ax, data, key, name, col, x_axis):
     ax.set_xlabel('Time (seconds)')
     if name == 'Memory':
         ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.5, color='r')
+        ax.set_ylim(top=2)
+    if name == 'CPU':
+        ax.set_ylim(top=30)
     if (name != "Memory") and (name != "CPU"):
         ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=6)
+        ax.set_ylim(top=30)
     ax.legend()
     #print('plot')
     plt.subplot(ax)
