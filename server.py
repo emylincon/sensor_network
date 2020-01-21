@@ -9,7 +9,7 @@ import paho.mqtt.client as mqtt
 
 fig = plt.figure()
 data_dict = {}     # {temp_server:{Temperature:[], Memory:[], CPU:[], x_list: []}, humidity_server:{Humidity:[], Memory:[], CPU:[], x_list: []}}
-window = 15
+window = 9
 style = ['g--^', 'r--', 'b-.s']
 
 
@@ -138,10 +138,11 @@ def plotter(ax, data, key, name, col, x_axis):
     if name == 'CPU':
         ax.set_ylim(top=30)
     if (name != "Memory") and (name != "CPU"):
-        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=6)
+        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=30)
         ax.set_ylim(top=30)
     ax.legend()
     #print('plot')
+    plt.subplots_adjust(left=0.3)
     plt.subplot(ax)
 
 
