@@ -68,7 +68,7 @@ def on_message(message_client, userdata, msg):
         for i in data_dict[topic_recv]:
             if len(data_dict[topic_recv][i]) > window:
                 data_dict[topic_recv][i].pop(0)
-                print('len: ', len(data_dict[topic_recv][i]))
+                #print('len: ', len(data_dict[topic_recv][i]))
 
 
 def broker_loop():
@@ -119,7 +119,7 @@ def plot_me():
             x_list = data_dict[topic_]['x_list']
             if data_set != 'x_list':
                 #print('axis: ', hold_ax[h])
-                plotter(ax=axes[hold_ax[h]], data=data_dict[topic_][data_set], key=topic_, name=data_set, col='c', x_axis=x_list)
+                plotter(ax=axes[hold_ax[h]], data=data_dict[topic_][data_set], key=topic_, name=data_set, col=style[h], x_axis=x_list)
                 h+=1
 
     fig.suptitle('IoT Sensor Network Smart City')
@@ -129,12 +129,13 @@ def plot_me():
 def plotter(ax, data, key, name, col, x_axis):
     ax.grid(True)
 
-    ax.plot(x_axis, _mov_avg(data), linewidth=2, label='{}'.format(name), color=col)
+    ax.plot(x_axis, _mov_avg(data), col, linewidth=2, label='{}'.format(name))
     #ax.set_ylabel('Moving {}'.format(name))
     ax.set_xlabel('Time (seconds)')
-    ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.5, color=col)
+    if name == 'Memory':
+        ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.5, color='c')
     if (name != "Memory") and (name != "CPU"):
-        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=30)
+        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=60)
     ax.legend()
     #print('plot')
     plt.subplot(ax)
