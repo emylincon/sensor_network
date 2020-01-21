@@ -50,7 +50,7 @@ def on_message(message_client, userdata, msg):
     # print the message received from the subscribed topic
     data = str(msg.payload, 'utf-8').split()
     print('received: ', data)
-    print(data_dict)
+    #print(data_dict)
     topic_recv = msg.topic.split('/')[1]
     #data format = 'title sensor_data memory_util cpu_util'
     if topic_recv not in data_dict:
@@ -128,6 +128,7 @@ def plotter(ax, data, key, name, col, x_axis):
     if name == "Memory":
         ax.set_ylabel('Client: {}'.format(key), rotation=0, fontsize=10, labelpad=30)
     ax.legend()
+    print('plot')
     plt.subplot(ax)
 
 
@@ -149,6 +150,7 @@ def main():
             if len(data_dict) > 0:
                 window_check()
             show_graphs()
+            print('here')
         time.sleep(1)
 
 
