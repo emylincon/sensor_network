@@ -124,8 +124,8 @@ def plotter(ax, data, key, name, col, x_axis):
     ax.plot(x_axis, _mov_avg(data), linewidth=2, label='{} {}'.format(name, key), color=col)
     #ax.set_ylabel('Moving {}'.format(name))
     ax.set_xlabel('Time (seconds)')
-    ax.fill_between(list(range(len(_mov_avg(data)))), _mov_avg(data), 0, alpha=0.5, color=col)
-    if name == "Memory":
+    ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.5, color=col)
+    if (name != "Memory") and (name != "CPU"):
         ax.set_ylabel('Client: {}'.format(key), rotation=0, fontsize=10, labelpad=30)
     ax.legend()
     #print('plot')
