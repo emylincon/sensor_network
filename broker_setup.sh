@@ -10,4 +10,8 @@ echo -e 'allow_anonymous false \npassword_file /etc/mosquitto/passwd' > /etc/mos
 /etc/init.d/mosquitto start
 apt install python3 -y
 apt install python3-pip -y
+pip3 install drawnow -y
+apt install python3-psutil -y
+apt install python3-matplotlib -y
 pip3 install paho-mqtt
+apt install python3-numpy -y
