@@ -16,7 +16,7 @@ def window_check():
     data_length = len(data_dict)
     for i in range(data_length):
         first = list(data_dict.values())[i]
-        d_ = first.values()[0]
+        d_ = list(first.values())[0]
         if len(d_) > window:
             for data in list(data_dict.values())[i].values():
                 data.pop(0)
