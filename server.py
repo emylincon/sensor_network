@@ -138,11 +138,11 @@ def plotter(ax, data, key, name, col, x_axis):
     if name == 'CPU':
         ax.set_ylim(top=30)
     if (name != "Memory") and (name != "CPU"):
-        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=30)
+        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=40)
         ax.set_ylim(top=30)
     ax.legend()
     #print('plot')
-    plt.subplots_adjust(left=0.3)
+    plt.subplots_adjust(left=0.1)
     plt.subplot(ax)
 
 
