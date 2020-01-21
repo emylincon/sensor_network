@@ -10,7 +10,7 @@ import paho.mqtt.client as mqtt
 fig = plt.figure()
 data_dict = {}     # {temp_server:{Temperature:[], Memory:[], CPU:[], x_list: []}, humidity_server:{Humidity:[], Memory:[], CPU:[], x_list: []}}
 window = 15
-style = ['g--^', 'r:o', 'b-.s']
+style = ['g--^', 'r--', 'b-.s']
 
 
 def window_check():
@@ -133,7 +133,7 @@ def plotter(ax, data, key, name, col, x_axis):
     #ax.set_ylabel('Moving {}'.format(name))
     ax.set_xlabel('Time (seconds)')
     if name == 'Memory':
-        ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.5, color='c')
+        ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.5, color='r')
     if (name != "Memory") and (name != "CPU"):
         ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=60)
     ax.legend()
