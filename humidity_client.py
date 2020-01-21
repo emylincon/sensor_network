@@ -15,7 +15,7 @@ GPIO.setmode(GPIO.BCM)
 instance = dht11.DHT11(pin=21)
 '''
 algo = psutil.Process()
-
+prev_t = 0
 
 os.system('clear')
 print('-----------------------------------')
@@ -52,13 +52,18 @@ def main():
     temp = result.temperature
     hum=result.humidity
     '''
-    hum = r.randrange(20)
-    if hum != 0:
-        cpu = plot_cpu()
-        mem = round(algo.memory_percent(), 4)
-        message = f'Humidity {hum} {mem} {cpu}'
-        client.publish(topic, message)
-    time.sleep(1)
+    while True:
+        hum = r.randrange(20)
+        if hum != 0:
+            cpu = plot_cpu()
+            mem = round(algo.memory_percent(), 4)
+            message = f'Humidity {hum} {mem} {cpu}'
+            client.publish(topic, message)
+        time.sleep(1)
+
+
+if __name__ == '__main__':
+    main()
 
 
 

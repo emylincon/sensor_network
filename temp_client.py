@@ -19,7 +19,7 @@ device_file = device_folder + '/w1_slave'
 
 
 algo = psutil.Process()
-
+prev_t = 0
 
 os.system('clear')
 print('-----------------------------------')
