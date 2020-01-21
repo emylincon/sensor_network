@@ -111,11 +111,12 @@ def plot_me():
         for data_set in data_dict[topic_]:
             x_list = data_dict[topic_]['x_list']
             if data_set != 'x_list':
+                print('axis: ', hold_ax[h])
                 plotter(ax=axes[hold_ax[h]], data=data_dict[topic_][data_set], key=topic_, name=data_set, col='c', x_axis=x_list)
                 h+=1
 
     fig.suptitle('IoT Sensor Network Smart City')
-    print('here: ', data_dict)
+    #print('here: ', data_dict)
 
 
 def plotter(ax, data, key, name, col, x_axis):
@@ -128,7 +129,7 @@ def plotter(ax, data, key, name, col, x_axis):
     if name == "Memory":
         ax.set_ylabel('Client: {}'.format(key), rotation=0, fontsize=10, labelpad=30)
     ax.legend()
-    print('plot')
+    #print('plot')
     plt.subplot(ax)
 
 
@@ -141,7 +142,7 @@ def main():
     h1 = Thread(target=broker_loop)
     h1.start()
     a = 1
-    print('okay now')
+    #print('okay now')
     while True:
         if len(data_dict) == 0:
             if a == 1:
@@ -151,7 +152,7 @@ def main():
             if len(data_dict) > 0:
                 window_check()
             show_graphs()
-            print('here')
+            #print('here')
         time.sleep(1)
 
 
