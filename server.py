@@ -33,10 +33,9 @@ def start_up():
     password = input('Password of Broker: ').strip()
     broker_ip = input("Broker's IP: ").strip()
     broker_port_no = 1883
-    topic = input("Topic: ").strip()   # topic layering use iot/#
+    topic = 'iot/#'
     print('-----------------------------------')
-    br = th.Thread(target=broker_loop())
-    br.start()
+
 
 
 # Callback Function on Connection with MQTT Server
@@ -50,6 +49,7 @@ def on_connect(connect_client, userdata, flags, rc):
 def on_message(message_client, userdata, msg):
     # print the message received from the subscribed topic
     data = str(msg.payload, 'utf-8').split()
+    print('received: ', data)
     topic_recv = msg.topic.split('/')[1]
     #data format = 'title sensor_data memory_util cpu_util'
     if topic_recv not in data_dict:
@@ -135,6 +135,8 @@ def show_graphs():
 
 def main():
     start_up()
+    br = th.Thread(target=broker_loop())
+    br.start()
     a = 1
     while True:
         if len(data_dict) == 0:
