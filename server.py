@@ -1,6 +1,6 @@
 import socket
 import time
-import threading as th
+from threading import Thread
 import os
 import matplotlib.pyplot as plt
 from drawnow import *
@@ -138,8 +138,8 @@ def show_graphs():
 
 def main():
     start_up()
-    br = th.Thread(target=broker_loop())
-    br.start()
+    h1 = Thread(target=broker_loop)
+    h1.start()
     a = 1
     print('okay now')
     while True:
