@@ -110,7 +110,7 @@ def plot_me():
         for data_set in data_dict[topic_]:
             x_list = data_dict[topic_]['x_list']
             if data_set != 'x_list':
-                print('axis: ', hold_ax[h])
+                #print('axis: ', hold_ax[h])
                 plotter(ax=axes[hold_ax[h]], data=data_dict[topic_][data_set], key=topic_, name=data_set, col='c', x_axis=x_list)
                 h+=1
 
