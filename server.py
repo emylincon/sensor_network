@@ -141,6 +141,7 @@ def main():
     br = th.Thread(target=broker_loop())
     br.start()
     a = 1
+    print('okay now')
     while True:
         if len(data_dict) == 0:
             if a == 1:
