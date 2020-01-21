@@ -70,9 +70,10 @@ def read_temp():
 
 
 def main():
+    print('herre')
     while True:
         read_temp()
-
+        print(temp_)
         if temp_ > 0:
             temp = temp_.pop()
             cpu = plot_cpu()
