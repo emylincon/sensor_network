@@ -138,7 +138,7 @@ def plotter(ax, data, key, name, col, x_axis):
     if name == 'CPU':
         ax.set_ylim(top=30)
     if (name != "Memory") and (name != "CPU"):
-        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=40)
+        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=50)
         ax.set_ylim(top=30)
     ax.legend()
     #print('plot')
