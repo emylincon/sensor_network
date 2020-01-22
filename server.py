@@ -149,11 +149,11 @@ def plotter(ax, data, key, name, col, x_axis):
         #ax.set_ylim(top=30)
         pass
     if (name != "Memory") and (name != "CPU"):
-        ax.set_ylabel('{}'.format(key.replace('_', ' ')), rotation=0, fontsize=10, labelpad=50)
+        ax.set_ylabel('{}'.format(key.replace('erature_', ' ').replace('dity_', ' ')), rotation=0, fontsize=10, labelpad=50)
         #ax.set_ylim(top=30)
     ax.legend()
     #print('plot')
-    plt.subplots_adjust(left=0.27, wspace=0.3)
+    plt.subplots_adjust(left=0.22, wspace=0.3)
     plt.subplot(ax)
 
 
