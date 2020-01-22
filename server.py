@@ -153,7 +153,7 @@ def plotter(ax, data, key, name, col, x_axis):
         #ax.set_ylim(top=30)
     ax.legend()
     #print('plot')
-    plt.subplots_adjust(left=0.27, wspace=0.2)
+    plt.subplots_adjust(left=0.27, wspace=0.3)
     plt.subplot(ax)
 
 
