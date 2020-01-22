@@ -16,6 +16,9 @@ style = ['g--^', 'r--', 'b-.s']
 save = 0
 file_name = 'iot.png'
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
+
 
 def window_check():
     data_length = len(data_dict)
@@ -223,6 +226,7 @@ def unicast_call():
                             except Exception as e:
                                 print(e)
                                 conn.close()
+                                print('Client Disconnected')
                         elif msg == 'light off':
                             try:
                                 GPIO.output(17, False)
@@ -230,6 +234,7 @@ def unicast_call():
                             except Exception as e:
                                 print(e)
                                 conn.close()
+                                print('Client Disconnected')
                         elif msg == 'last temp':
                             l_temp = data_dict['Temperature_server']['Temperature'][-1].encode()
                             conn.sendall(l_temp)
