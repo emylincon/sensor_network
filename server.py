@@ -236,10 +236,10 @@ def unicast_call():
                                 conn.close()
                                 print('Client Disconnected')
                         elif msg == 'last temp':
-                            l_temp = data_dict['Temperature_server']['Temperature'][-1].encode()
+                            l_temp = str(data_dict['Temperature_server']['Temperature'][-1]).encode()
                             conn.sendall(l_temp)
                         elif msg == 'last hum':
-                            l_cpu = data_dict['Humidity_server']['Humidity'][-1].encode()
+                            l_cpu = str(data_dict['Humidity_server']['Humidity'][-1]).encode()
                             conn.sendall(l_cpu)
 
                         elif msg.lower() == 'exit':
