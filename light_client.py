@@ -36,7 +36,7 @@ while True:
             GPIO.output(17, True)
         elif text == 'off':
             GPIO.output(17, False)
-        elif text == 'stop':
+        elif (text == 'stop') or (text == 'exit'):
             break
         else:
             print("invalid input \n You Typed: ", text)
