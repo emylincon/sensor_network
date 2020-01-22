@@ -55,7 +55,7 @@ def on_connect(connect_client, userdata, flags, rc):
 def on_message(message_client, userdata, msg):
     # print the message received from the subscribed topic
     data = str(msg.payload, 'utf-8').split()
-    print('received: ', data)
+    #print('received: ', data)
     #print(data_dict)
     topic_recv = msg.topic.split('/')[1]
     #data format = 'title sensor_data memory_util cpu_util'
