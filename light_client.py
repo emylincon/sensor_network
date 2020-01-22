@@ -1,47 +1,45 @@
 import RPi.GPIO as GPIO
+import os
+from pyfiglet import Figlet
+import sys
 import time
+from termcolor import colored, cprint
 
-ledPins = [11, 12, 13, 15, 16, 18, 22, 3, 5, 24]
-
-
-def setup():
-    GPIO.setmode(GPIO.BOARD)  # use PHYSICAL GPIO Numbering
-    GPIO.setup(ledPins, GPIO.OUT)  # set all ledPins to OUTPUT mode
-    GPIO.output(ledPins, GPIO.HIGH)  # make all ledPins output HIGH level, turn off all led
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.OUT)
 
 
-def loop():
-    while True:
-        for pin in ledPins:  # make led(on) move from left to right
-            GPIO.output(pin, GPIO.LOW)
-            time.sleep(0.1)
-            GPIO.output(pin, GPIO.HIGH)
-            for pin in ledPins[::-1]:  # make led(on) move from right to left
-                GPIO.output(pin, GPIO.LOW)
-            time.sleep(0.1)
-            GPIO.output(pin, GPIO.HIGH)
+def delay_print(s):
+    for c in s:
+        sys.stdout.write(c)
+        sys.stdout.flush()
+        time.sleep(0.15)
 
 
-def destroy():
-    GPIO.cleanup()  # Release all GPIO
+os.system('clear')
+print('>> starting...')
+delay_print("<======================================================")
 
+os.system('clear')
+custom_fig = Figlet(font='graffiti')
+cprint(custom_fig.renderText('welcome to LSBU'), 'yellow')
+cprint("/*****************************************************\\", 'yellow')
+cprint("*                                                     *", 'yellow')
+cprint("*      Enter Off Or On to Control the Led Light       *", 'red')
+cprint("*                                                     *", 'yellow')
+cprint("\*****************************************************/\n", 'yellow')
 
-if __name__ == '__main__':  # Program entrance
-    print('Program is starting...')
-    setup()
+while True:
     try:
-        loop()
-    except KeyboardInterrupt:  # Press ctrl-c to end the program.
-        destroy()
-
-
-def loop():
-    while True:
-        for pin in ledPins:  # make led on from left to right
-            GPIO.output(pin, GPIO.LOW)
-            time.sleep(0.1)
-            GPIO.output(pin, GPIO.HIGH)
-        for pin in ledPins[::-1]:  # make led on from right to left
-            GPIO.output(pin, GPIO.LOW)
-            time.sleep(0.1)
-            GPIO.output(pin, GPIO.HIGH)
+        text = input(">> ").lower()
+        if text == 'on':
+            GPIO.output(17, True)
+        elif text == 'off':
+            GPIO.output(17, False)
+        elif text == 'stop':
+            break
+        else:
+            print("invalid input \n You Typed: ", text)
+    except KeyboardInterrupt:
+        print("\nProgramme Terminated\n")
+        break
