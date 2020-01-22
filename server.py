@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from drawnow import *
 import paho.mqtt.client as mqtt
 import base64
+import RPi.GPIO as GPIO
 
 
 fig = plt.figure()
@@ -216,11 +217,19 @@ def unicast_call():
                                 print('Client Disconnected')
                                 break
                         elif msg == 'light on':
-                            GPIO.output(17, True)
-                            print("light on")
+                            try:
+                                GPIO.output(17, True)
+                                print("light on")
+                            except Exception as e:
+                                print(e)
+                                conn.close()
                         elif msg == 'light off':
-                            GPIO.output(17, False)
-                            print('light off')
+                            try:
+                                GPIO.output(17, False)
+                                print('light off')
+                            except Exception as e:
+                                print(e)
+                                conn.close()
                         elif msg == 'last temp':
                             l_temp = data_dict['Temperature_server']['Temperature'][-1].encode()
                             conn.sendall(l_temp)
