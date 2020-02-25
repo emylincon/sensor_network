@@ -133,6 +133,7 @@ def plot_me():
     fig.suptitle('IoT Sensor Network Smart City')
     if save == 1:
         plt.savefig(file_name)
+        print('file saved')
         save = 0
 
 
