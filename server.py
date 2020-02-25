@@ -143,7 +143,7 @@ def plotter(ax, data, key, name, col, x_axis):
     #ax.set_ylabel('Moving {}'.format(name))
     ax.set_xlabel('Time (seconds)')
     if name == 'Memory':
-        ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.5, color='r')
+        ax.fill_between(x_axis, _mov_avg(data), 0, alpha=0.2, color='r')
         #ax.set_ylim(top=2)
     if name == 'CPU':
         #ax.set_ylim(top=30)
