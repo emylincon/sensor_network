@@ -131,10 +131,10 @@ def plot_me():
                 h+=1
 
     fig.suptitle('IoT Sensor Network Smart City')
-    # if save == 1:
-    #     plt.savefig(file_name)
-    #     print('file saved')
-    #     save = 0
+    if save == 1:
+        plt.savefig(file_name)
+        print('file saved')
+        save = 0
 
 
 def plotter(ax, data, key, name, col, x_axis):
@@ -209,8 +209,8 @@ def unicast_call():
                         if msg == 'send image':
                             try:
                                 delete_previous(path=file_name)
-                                plt.savefig(file_name)
-                                time.sleep(1)
+                                save = 1
+                                time.sleep(3)
                                 send = fin1(file_name)
                                 length = str(len(send)).encode()
                                 conn.sendall(length)
